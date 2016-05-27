@@ -3,9 +3,14 @@
     "guzzlehttp/guzzle": "6.2.0",
     "silex/silex": "v1.3.5",
     "monolog/monolog": "1.18.2",
-    "cu/linebot": "dev-master"
+    "cu/linebot": "dev-master",
+    "indicoio/indicoio-php": "*"
   },
+  "minimum-stability": "dev",
   "require-dev": {
     "heroku/heroku-buildpack-php": "v100"
+  },
+  "config": {
+  "secure-http": false
   }
 }

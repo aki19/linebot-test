@@ -4,7 +4,7 @@ require('../vendor/autoload.php');
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use \IndicoIo\IndicoIo as IndicoIo;
+use IndicoIo\IndicoIo as IndicoIo;
 
 IndicoIo::$config['api_key'] = '22e41cde696fcf15bc67f06319f6ffe6';
 
@@ -35,7 +35,7 @@ $app->post('/callback', function (Request $request) use ($app, $bot) {
 
         if ($content['text']) {
             //$bot->sendText($from, sprintf('%sじゃないよ、もう', $content['text']));
-            $bot->sendText($from, IndicoIo::sentiment_hq($content['text']));
+            $bot->sendText($from, IndicoIo::sentiment($content['text']));
         }
     }
 
