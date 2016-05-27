@@ -6,7 +6,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use IndicoIo\IndicoIo as IndicoIo;
 
-IndicoIo::$config['api_key'] = '22e41cde696fcf15bc67f06319f6ffe6';
+IndicoIo::$config['api_key']  = '22e41cde696fcf15bc67f06319f6ffe6';
+IndicoIo::$config['language'] = 'japanese';
 
 $app = new Silex\Application();
 $bot = new CU\LineBot();
@@ -35,7 +36,8 @@ $app->post('/callback', function (Request $request) use ($app, $bot) {
 
         if ($content['text']) {
             //$bot->sendText($from, sprintf('%sじゃないよ、もう', $content['text']));
-            $bot->sendText($from, IndicoIo::sentiment($content['text']));
+            $res_ana = IndicoIo::sentiment($content['text']);
+            $bot->sendText($from, round($res_ana*100)."％のポジ発言");
         }
     }
 
